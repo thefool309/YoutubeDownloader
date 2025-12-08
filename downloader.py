@@ -3,7 +3,11 @@ import yt_dlp
 # the function takes the video url as an argument
 def video_downloader(video_url):
     # passing the url to the ydl object
-    ydl_opts = {}
+    ydl_opts = {
+      # uncomment and change with name of browser if you need cookies for age restriction and what-not
+      # your account can get banned for this so you may consider signing into a burner
+      # 'cookiesfrombrowser': ('firefox', None, None, None)
+    }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
       info = ydl.extract_info(video_url, download=True)
     return info.get("title")
